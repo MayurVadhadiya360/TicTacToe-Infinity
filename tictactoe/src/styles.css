@@ -1,0 +1,1235 @@
+/* ===========================================================
+   GLOBAL NEON / CYBERPUNK BASE
+   =========================================================== */
+
+:root {
+    --bg: #07090f;
+    --panel: #0d111a;
+    --border: #1a2639;
+    --neon-blue: #00eaff;
+    --neon-blue-glow: 0 0 12px #00eaff, 0 0 24px #00eaffa0;
+    --neon-pink: #ff007a;
+    --neon-pink-glow: 0 0 12px #ff007a, 0 0 24px #ff007aaa;
+    --text-muted: #899bb2;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 20%, #0d0f16, #05070a 70%),
+        repeating-linear-gradient(to bottom, #00eaff08 0px, #00eaff08 2px, transparent 2px, transparent 35px),
+        repeating-linear-gradient(to right, #00eaff08 0px, #00eaff08 2px, transparent 2px, transparent 35px);
+    background-size: cover;
+    color: white;
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 0.4px;
+}
+
+
+/* ===========================================================
+   HEADER
+   =========================================================== */
+
+.header {
+    background: rgba(0, 15, 25, 0.45);
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 234, 255, 0.25);
+    box-shadow: 0 0 18px rgba(0, 234, 255, 0.15);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px #00eaffaa;
+}
+
+.small {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+
+/* ===========================================================
+   CYBER CARDS / PANELS
+   =========================================================== */
+
+.card {
+    background: var(--panel);
+    padding: clamp(12px, 3vw, 26px);
+    margin-top: 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 234, 255, 0.25);
+    box-shadow:
+        0 0 10px rgba(0, 234, 255, 0.15),
+        inset 0 0 15px rgba(0, 234, 255, 0.08);
+    position: relative;
+}
+
+/* inner faint hologram shimmer */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(rgba(0, 234, 255, 0.07),
+            rgba(0, 234, 255, 0.02));
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+
+/* ===========================================================
+   CYBER BUTTONS
+   =========================================================== */
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(to right, #00eaff, #0077ff);
+    color: #001014;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    box-shadow: 0 0 12px #00eaffbb;
+    transition: 0.18s ease-out;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #00ffff, #0090ff);
+    box-shadow: 0 0 18px #00eaff;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn,
+.btn-red {
+    width: 100%;
+    max-width: 220px;
+}
+
+/* ===========================================================
+   RED BUTTON VARIANT (if needed later)
+   =========================================================== */
+
+.btn-red {
+    background: linear-gradient(to right, var(--neon-pink), #ff4ca0);
+    box-shadow: 0 0 14px #ff007acc;
+    border: none;
+}
+
+.btn-red:hover {
+    box-shadow: 0 0 18px #ff007aff;
+    transform: translateY(-2px);
+}
+
+
+/* ===========================================================
+   CYBER INPUTS
+   =========================================================== */
+
+.input {
+    padding: 10px 12px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 234, 255, 0.4);
+    background: rgba(0, 10, 20, 0.5);
+    color: var(--neon-blue);
+    font-weight: 600;
+    outline: none;
+    box-shadow:
+        inset 0 0 10px rgba(0, 234, 255, 0.15),
+        0 0 12px rgba(0, 234, 255, 0.1);
+    transition: 0.2s ease;
+}
+
+.input::placeholder {
+    color: #5e7a89;
+    text-shadow: 0 0 5px #00eaff44;
+}
+
+.input:focus {
+    border-color: #00eaff;
+    box-shadow:
+        inset 0 0 12px rgba(0, 234, 255, 0.3),
+        0 0 18px rgba(0, 234, 255, 0.6);
+}
+
+
+/* ===========================================================
+   FLEX & GENERAL UTILS
+   =========================================================== */
+
+.flex {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CYBER NEON DIVIDER */
+.neon-divider {
+    width: 100%;
+    height: 2px;
+    margin: 10px 0;
+
+    background: linear-gradient(90deg,
+            transparent,
+            var(--neon-blue),
+            transparent);
+
+    box-shadow:
+        0 0 8px var(--neon-blue),
+        0 0 14px #00eaff88;
+
+    border-radius: 4px;
+    animation: dividerGlow 2.2s infinite ease-in-out;
+}
+
+@keyframes dividerGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* HOLOGRAM SCAN DIVIDER */
+.holo-divider {
+    width: 100%;
+    height: 3px;
+    position: relative;
+    background: rgba(0, 234, 255, 0.15);
+    overflow: hidden;
+    border-radius: 6px;
+    margin: 14px 0;
+}
+
+.holo-divider::before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    left: -40%;
+    top: 0;
+    background: linear-gradient(90deg, transparent, #00eaff, transparent);
+    box-shadow: 0 0 12px #00eaffaa;
+    animation: holoRun 1.6s infinite linear;
+}
+
+@keyframes holoRun {
+    0% {
+        left: -40%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* PARTICLE NEON DIVIDER */
+.neon-particle-divider {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 234, 255, 0.4);
+    margin: 12px 0;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+.neon-particle-divider::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 12px var(--neon-blue);
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: -6px;
+
+    animation: dividerParticle 2.4s infinite ease-in-out;
+}
+
+@keyframes dividerParticle {
+    0% {
+        left: -6px;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(100% + 6px);
+        opacity: 0;
+    }
+}
+
+
+/* ===========================================================
+   Hologram Dots Animation
+   =========================================================== */
+
+.dot-container {
+    display: inline-block;
+    width: 1.4em;
+    text-align: left;
+}
+
+.dot {
+    opacity: 0;
+    transition: opacity 0.25s linear;
+}
+
+.dot.visible {
+    opacity: 1;
+}
+
+/* ===========================================================
+   CYBER WAITING PANEL (AAA Neon)
+   =========================================================== */
+
+.neon-wait-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    border-radius: 16px;
+
+    background: radial-gradient(circle at 50% 20%, #0f1821, #05080c 80%);
+    border: 1px solid rgba(0, 234, 255, 0.35);
+    box-shadow:
+        0 0 16px #00eaff44,
+        0 0 30px #00eaff22,
+        inset 0 0 25px #001e26;
+}
+
+/* hologram grid pattern */
+.neon-wait-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(90deg,
+            rgba(0, 255, 255, 0.06) 0px,
+            rgba(0, 255, 255, 0.06) 2px,
+            transparent 2px,
+            transparent 28px),
+        repeating-linear-gradient(0deg,
+            rgba(0, 255, 255, 0.06) 0px,
+            rgba(0, 255, 255, 0.06) 2px,
+            transparent 2px,
+            transparent 28px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+/* Hologram scan sweep */
+.wait-holo-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 234, 255, 0.8),
+            transparent);
+    animation: waitScan 2.2s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes waitScan {
+    0% {
+        top: 0%;
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0.1;
+    }
+}
+
+/* Title */
+.neon-wait-title {
+    font-size: clamp(18px, 5vw, 26px);
+    font-weight: 700;
+    color: #00eaff;
+    text-shadow: 0 0 8px #00eaffcc;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+/* Neon flickering dots */
+.neon-dots .dot {
+    color: #00eaff;
+    font-size: 22px;
+    text-shadow:
+        0 0 5px #00eaff,
+        0 0 10px #00eaffaa,
+        0 0 18px #00eaff77;
+    display: inline-block;
+}
+
+/* Timer */
+.neon-wait-timer {
+    margin-top: 6px;
+    font-size: clamp(22px, 7vw, 34px);
+    font-weight: 700;
+    color: #00bcd4;
+    text-shadow:
+        0 0 12px #00eaff,
+        0 0 25px #00eaff99;
+}
+
+
+/* ===========================================================
+   PARTICLE EFFECTS
+   =========================================================== */
+
+.wait-particles {
+    position: absolute;
+    inset: -30px;
+    pointer-events: none;
+}
+
+.wait-particles.layer1::before,
+.wait-particles.layer2::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00eaff;
+    box-shadow:
+        40px -20px #00eaff,
+        -60px 40px #00eaff,
+        70px 10px #00eaff,
+        -20px -70px #00eaff;
+    opacity: 0.7;
+    animation: waitFloat1 6s ease-in-out infinite;
+}
+
+.wait-particles.layer2::before {
+    box-shadow:
+        50px 80px #ff007a,
+        -80px -30px #ff007a,
+        20px -90px #ff007a,
+        -10px 40px #ff007a;
+    animation: waitFloat2 8s ease-in-out infinite;
+}
+
+@keyframes waitFloat1 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(12px, -18px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+}
+
+@keyframes waitFloat2 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-18px, 20px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+}
+
+
+
+/* ===========================================================
+   CYBERPUNK SHOWDOWN PANEL
+   =========================================================== */
+
+.cyber-showdown {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(12px, 4vw, 40px);
+    flex-wrap: wrap;
+    padding: 20px 10px;
+}
+
+/* ===== CARDS ===== */
+
+.cyber-card {
+    width: clamp(110px, 26vw, 160px);
+    padding: 18px 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0f0f15 0%, #161623 100%);
+    border: 2px solid #23233b;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.08);
+    text-align: center;
+    transition: 0.28s ease-out;
+    position: relative;
+}
+
+/* Glowing neon border when active (turn) */
+.cyber-card.cyber-active {
+    border-color: #00eaff;
+    box-shadow:
+        0 0 12px #00eaff,
+        0 0 20px #00eaff55,
+        0 0 40px #00eaff33;
+    transform: scale(1.06);
+}
+
+/* =====================================================
+   RED CYBER HOLOGRAM (Opponent)
+   ===================================================== */
+
+/* Opponent card always “red themed” */
+.cyber-card.red-active {
+    border-color: #ff005e;
+    box-shadow:
+        0 0 12px #ff005e,
+        0 0 20px #ff005e66,
+        0 0 40px #ff005e33;
+}
+
+/* When opponent is the active turn */
+.cyber-card.red-active.cyber-active {
+    box-shadow:
+        0 0 14px #ff006e,
+        0 0 24px #ff006ea0,
+        0 0 50px #ff006e55;
+}
+
+.cyber-card.red-active .cyber-avatar::after {
+    border: 2px dashed rgba(255, 0, 110, 0.8);
+    animation: rotateRing 2.6s linear infinite;
+}
+
+.cyber-card.red-active::before {
+    background: linear-gradient(rgba(255, 0, 120, 0.12) 0%,
+            rgba(255, 0, 120, 0.03) 30%,
+            rgba(255, 0, 120, 0.08) 60%,
+            rgba(255, 0, 120, 0.04) 100%);
+}
+
+/* ===== AVATAR CIRCLE ===== */
+
+.cyber-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(circle, #1e1e29, #11111a);
+    border: 2px solid #2e2e44;
+    box-shadow: inset 0 0 10px #000;
+}
+
+.cyber-avatar.you {
+    box-shadow:
+        inset 0 0 15px rgba(0, 255, 255, 0.5),
+        0 0 12px rgba(0, 255, 255, 0.8);
+}
+
+.cyber-avatar.opp {
+    box-shadow:
+        inset 0 0 15px rgba(255, 0, 140, 0.4),
+        0 0 12px rgba(255, 0, 140, 0.8);
+}
+
+
+
+/* ===== SYMBOLS (X / O) ===== */
+
+.cell {
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: 2px;
+}
+
+.cyber-symbol {
+    font-size: 38px;
+    font-weight: 700;
+    color: #00eaff;
+    text-shadow:
+        0 0 6px #00eaff,
+        0 0 12px #00eaffaa,
+        0 0 20px #00eaff55;
+}
+
+.red-symbol {
+    color: #ff006e !important;
+    text-shadow:
+        0 0 10px #ff006e,
+        0 0 20px #ff006eaa,
+        0 0 35px #ff006e66;
+}
+
+
+/* For X glow: */
+.cell:contains("X") {
+    color: #00faff;
+    text-shadow:
+        0 0 12px #00faff,
+        0 0 28px #00eaff87;
+}
+
+/* For O glow: */
+.cell:contains("O") {
+    color: #ff00ae;
+    text-shadow:
+        0 0 12px #ff00ae,
+        0 0 28px #ff00ae77;
+}
+
+/* Opponent neon color */
+.cyber-avatar.opp .cyber-symbol {
+    color: #ff008c;
+    text-shadow:
+        0 0 6px #ff008c,
+        0 0 12px #ff008caa,
+        0 0 20px #ff008c55;
+}
+
+.cyber-avatar.opp {
+    background: radial-gradient(circle, #2a0013, #150008);
+    box-shadow:
+        inset 0 0 15px rgba(255, 0, 140, 0.5),
+        0 0 14px rgba(255, 0, 140, 0.9);
+}
+
+
+/* ===== TEXT ===== */
+
+.cyber-name {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.cyber-role {
+    font-size: 12px;
+    color: #8b8b9e;
+    margin-top: 2px;
+}
+
+/* ===== VS BADGE ===== */
+
+.cyber-vs {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1a1a25, #242436);
+    border: 2px solid #33334d;
+    color: #00eaff;
+    text-shadow: 0 0 8px #00eaffaa;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    animation: neonPulse 1.4s infinite ease-in-out;
+}
+
+/* Pulsating neon VS */
+@keyframes neonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 12px #00eaff77;
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 22px #00eaffcc;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 12px #00eaff77;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .cyber-showdown {
+        gap: 14px;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .cyber-card {
+        width: 46%;
+    }
+
+    .cyber-vs {
+        /* order: -1; */
+        width: fit-content;
+        text-align: center;
+        margin: 10px 0;
+    }
+}
+
+.cyber-card.cyber-active {
+    position: relative;
+    overflow: visible;
+}
+
+.cyber-card.cyber-active::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 16px;
+    border: 2px solid rgba(0, 234, 255, 0.5);
+    box-shadow:
+        0 0 12px #00eaff99,
+        0 0 28px #00eaff66,
+        inset 0 0 16px #00eaff55;
+    animation: hologramPulse 1.8s infinite ease-in-out;
+}
+
+.cyber-card.cyber-active.red-active::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 16px;
+    /* 🔴 Red neon border */
+    border: 2px solid rgba(255, 0, 110, 0.55);
+    /* 🔴 Red neon outer + inner glow */
+    box-shadow:
+        0 0 12px #ff006e99,
+        0 0 28px #ff006e66,
+        inset 0 0 16px #ff006e55;
+    /* Same animation as blue to match style */
+    animation: hologramPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes hologramPulse {
+    0% {
+        opacity: 0.55;
+        transform: scale(0.97);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 0.55;
+        transform: scale(0.97);
+    }
+}
+
+.cyber-card.cyber-active .cyber-avatar {
+    position: relative;
+}
+
+.cyber-card.cyber-active .cyber-avatar::after {
+    content: "";
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    top: -12px;
+    left: -12px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0, 234, 255, 0.8);
+    animation: rotateRing 2.6s linear infinite;
+    pointer-events: none;
+    box-shadow:
+        0 0 12px #00eaff,
+        0 0 22px #00eaff88;
+}
+
+.cyber-card.cyber-active.red-active .cyber-avatar::after {
+    border: 2px dashed rgba(255, 0, 110, 0.85);
+    /* bright neon red/pink */
+    box-shadow:
+        0 0 12px #ff006e,
+        0 0 22px #ff006e88;
+}
+
+@keyframes rotateRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cyber-card.cyber-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(rgba(0, 234, 255, 0.12) 0%,
+            rgba(0, 234, 255, 0.03) 30%,
+            rgba(0, 234, 255, 0.08) 60%,
+            rgba(0, 234, 255, 0.04) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.14;
+    animation: holoFlicker 0.18s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes holoFlicker {
+    0% {
+        opacity: 0.10;
+    }
+
+    100% {
+        opacity: 0.22;
+    }
+}
+
+.cyber-card.cyber-active::after {
+    overflow: hidden;
+}
+
+.cyber-card.cyber-active .holo-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent,
+            #00eaffcc,
+            transparent);
+    animation: scanMove 1.7s infinite ease-in-out;
+}
+
+.cyber-card.cyber-active .holo-scan.red-scan {
+    background: linear-gradient(90deg,
+            transparent,
+            #ff006ecc,
+            transparent);
+}
+
+
+@keyframes scanMove {
+    0% {
+        top: 0%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* ===========================================================
+   🌐 3D NEON GRID BACKGROUND
+   =========================================================== */
+body {
+    background:
+        radial-gradient(circle at 50% 20%, #0f172a, #000000 70%),
+        repeating-linear-gradient(to bottom,
+            #00eaff11 0px,
+            #00eaff11 2px,
+            transparent 2px,
+            transparent 40px),
+        repeating-linear-gradient(to right,
+            #00eaff11 0px,
+            #00eaff11 2px,
+            transparent 2px,
+            transparent 40px);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* ===========================================================
+   🎮 NEON BOARD WRAPPER
+   =========================================================== */
+
+.grid-wrapper {
+    padding: clamp(10px, 2vw, 26px);
+    border-radius: 20px;
+    background: rgba(0, 20, 30, 0.5);
+    position: relative;
+    overflow: hidden;
+    margin-top: 14px;
+}
+
+.grid-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #00eaff44, #ff00cc44);
+    filter: blur(28px);
+    z-index: -1;
+}
+
+/* === NEON BORDER === */
+.neon-board {
+    padding: clamp(10px, 2vw, 28px);
+    border-radius: 16px;
+    border: 3px solid rgba(0, 234, 255, 0.5);
+    box-shadow:
+        0 0 12px #00eaff,
+        0 0 22px #00eaff88,
+        0 0 40px #00eaff55,
+        inset 0 0 12px #00eaff66;
+    animation: neonBorderPulse 2.6s infinite ease-in-out;
+}
+
+@keyframes neonBorderPulse {
+    0% {
+        box-shadow: 0 0 12px #00eaff88, 0 0 40px #00eaff55;
+    }
+
+    50% {
+        box-shadow: 0 0 24px #00eaffaa, 0 0 60px #00eaff77;
+    }
+
+    100% {
+        box-shadow: 0 0 12px #00eaff88, 0 0 40px #00eaff55;
+    }
+}
+
+/* Make the cells glow on hover */
+.cell:hover {
+    background: #00eaff33;
+    box-shadow: 0 0 10px #00eaffaa;
+}
+
+/* Title/UI neon styling */
+.cyber-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cyber-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00eaff;
+    text-shadow: 0 0 8px #00eaffaa;
+}
+
+
+/* ===========================================================
+   NEON HOLOGRAM BOARD (AAA QUALITY)
+   =========================================================== */
+
+.neon-board {
+    padding: 20px;
+    border-radius: 22px;
+    background: radial-gradient(circle at 50% 50%, #06202d, #02070a 60%);
+    border: 4px solid rgba(0, 240, 255, 0.5);
+    box-shadow:
+        0 0 25px #00eaffaa,
+        0 0 50px #00eaff55,
+        inset 0 0 30px #001a22;
+    position: relative;
+}
+
+/* Inner hologram rim */
+.neon-board::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.35),
+        inset 0 0 25px rgba(0, 255, 255, 0.25);
+    pointer-events: none;
+}
+
+
+/* ===========================================================
+   CELLS (deep neon hologram)
+   =========================================================== */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+    gap: clamp(6px, 2vw, 18px);
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.cell {
+    aspect-ratio: 1;
+    width: 100%;
+    background: rgba(0, 20, 28, 0.6);
+    border-radius: 12px;
+    border: 2px solid rgba(0, 255, 255, 0.35);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    color: #00faff;
+    text-shadow:
+        0 0 10px #00faff,
+        0 0 20px #00faffaa,
+        0 0 40px #00faff55;
+
+    box-shadow:
+        0 0 10px #00eaff33,
+        inset 0 0 15px #00222b;
+
+    cursor: pointer;
+    transition: 0.18s ease;
+}
+
+/* Hover highlight */
+.cell:hover {
+    background: rgba(0, 80, 100, 0.5);
+    box-shadow:
+        0 0 18px #00eaffaa,
+        inset 0 0 25px #003440;
+    border-color: #00eaffaa;
+}
+
+/* If there's an X or O, increase glow */
+.cell:not(:empty) {
+    box-shadow:
+        0 0 18px #00eaff88,
+        inset 0 0 25px #002028;
+}
+
+/* ================================
+   WIN EFFECT
+   ================================ */
+
+.win-effect {
+    position: relative;
+    animation: winPulse 2.2s ease-out forwards;
+}
+
+@keyframes winPulse {
+    0% {
+        box-shadow: 0 0 0px #00eaff;
+    }
+
+    20% {
+        box-shadow: 0 0 50px #00eaffaa;
+    }
+
+    60% {
+        box-shadow: 0 0 80px #00eaff66;
+    }
+
+    100% {
+        box-shadow: 0 0 25px #00eaff55;
+    }
+}
+
+/* Shockwave ring */
+.win-effect::after {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    border-radius: 20px;
+    border: 3px solid rgba(0, 234, 255, 0.7);
+    animation: winShockwave 1.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes winShockwave {
+    0% {
+        opacity: 0.9;
+        transform: scale(0.6);
+    }
+
+    70% {
+        opacity: 0.4;
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.7);
+    }
+}
+
+/* Win Banner */
+.win-banner {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.win-banner .glow {
+    font-size: 34px;
+    font-weight: 800;
+    color: #00eaff;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 30px #00eaffa0,
+        0 0 60px #00eaff77;
+    animation: winGlowText 2s infinite ease-in-out;
+}
+
+@keyframes winGlowText {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ================================
+   LOSE EFFECT
+   ================================ */
+
+.lose-effect {
+    position: relative;
+    animation: loseShake 0.4s linear 1;
+}
+
+@keyframes loseShake {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Collapse flicker mask */
+.lose-effect::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(255, 0, 80, 0.2) 0px,
+            rgba(255, 0, 80, 0.2) 2px,
+            transparent 2px,
+            transparent 6px);
+    opacity: 0;
+    pointer-events: none;
+    animation: loseFlicker 1.2s steps(4) forwards;
+}
+
+@keyframes loseFlicker {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Lose Banner */
+.lose-banner {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.lose-banner .glow-red {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ff0055;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 10px #ff0055,
+        0 0 30px #ff0055aa,
+        0 0 60px #ff005533;
+    animation: loseTextPulse 1.2s infinite ease-in-out;
+}
+
+@keyframes loseTextPulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
