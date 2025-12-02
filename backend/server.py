@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from backend.gamemanager import Game, GameManager
+from gamemanager import Game, GameManager
 
 
 # Optional: import aioredis for redis-backed operations (commented usage in code)
