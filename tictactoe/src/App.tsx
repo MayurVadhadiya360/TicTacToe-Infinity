@@ -5,14 +5,16 @@ import Lobby from './components/Lobby'
 import GameBoard from './components/GameBoard'
 import { useGameSocket } from './hooks/useGameSocket'
 import type { ServerMessage } from './types/messages'
+import InfoCard from './components/InfoCard'
 
-const SERVER:string = import.meta.env.VITE_API_URL || window.location.origin; // change this if backend is at other address
+const SERVER: string = import.meta.env.VITE_API_URL || window.location.origin; // change this if backend is at other address
 
 function App() {
-  const [mode, setMode] = useState<'lobby'|'game'>('lobby')
+  const [mode, setMode] = useState<'lobby' | 'game'>('lobby')
+  const [showInfo, setShowInfo] = useState(false)
   const [gameId, setGameId] = useState<string>('')
   const [playerId, setPlayerId] = useState<string>(localStorage.getItem('playerId') ?? '')
-  
+
   // handle messages that require special action (match_found)
   const handleMatchFound = useCallback((m: ServerMessage) => {
     if (m.type === 'match_found') {
@@ -48,7 +50,7 @@ function App() {
   }, [game])
 
   // start from lobby
-  const onStart = async (requestedGameId: string, pid: string, modeType: 'create'|'specific'|'random') => {
+  const onStart = async (requestedGameId: string, pid: string, modeType: 'create' | 'specific' | 'random') => {
     setPlayerId(pid); localStorage.setItem('playerId', pid)
 
     if (modeType === 'create') {
@@ -66,7 +68,7 @@ function App() {
     }
   }
 
-  const onCellClick = (idx:number) => {
+  const onCellClick = (idx: number) => {
     send({ type: 'move', index: idx })
   }
 
@@ -79,14 +81,28 @@ function App() {
   return (
     <div className="container">
       <div className="header">
-        <div className="title">Tic-Tac-Toe: Infinity</div>
+        <div className="title">
+          Tic-Tac-Toe: Infinity
+          {" "}
+          <button
+            type="button"
+            className="info-btn"
+            onClick={() => setShowInfo(true)}
+            aria-label="Game rules & info"
+          >
+            ⓘ
+          </button>
+        </div>
         <div className="small">{connected ? '🟢Connected' : '⚪Disconnected'}</div>
       </div>
+
+      {/* INFO MODAL */}
+      <InfoCard open={showInfo} onClose={() => setShowInfo(false)} />
 
       {mode === 'lobby' ? (
         <Lobby onStart={onStart} />
       ) : (
-        <div style={{display:'grid', gridTemplateColumns:'1fr', gap:12}}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 12 }}>
           <GameBoard game={game} me={playerId} onCell={onCellClick} onLeave={leave} />
         </div>
       )}
